@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How many rounds until you can trust a strokes-gained number?</title>
+<meta name="description" content="Reliability and stabilization of strokes-gained categories on the PGA Tour, 2017–2026. Driving is signal in ~9 rounds; putting takes ~48.">
+<style>
+  :root {
+    --bg: #09090b;          /* zinc-950 */
+    --card: #18181b;        /* zinc-900 */
+    --ink: #fafafa;
+    --secondary: #c3c2b7;
+    --muted: #898781;
+    --accent: #2dd4bf;      /* teal-400 */
+    --accent-bright: #5eead4;
+    --border: rgba(255,255,255,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--secondary);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+    font-size: 1.0625rem;
+  }
+  main { max-width: 44rem; margin: 0 auto; padding: 4rem 1.25rem 6rem; }
+  h1 {
+    color: var(--ink);
+    font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.9rem;
+  }
+  h2 {
+    color: var(--ink);
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+    margin: 2.6rem 0 0.8rem;
+  }
+  h3 { color: var(--ink); font-size: 1.1rem; margin: 2rem 0 0.6rem; }
+  p { margin: 0 0 1.1rem; }
+  .byline { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.2rem; }
+  .byline a { color: var(--accent); }
+  a { color: var(--accent-bright); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--ink); font-weight: 600; }
+  em { color: inherit; }
+  ul { margin: 0 0 1.1rem 1.2rem; }
+  li { margin-bottom: 0.45rem; }
+  figure {
+    margin: 2rem calc(50% - min(50vw, 29rem)) 2.2rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  figure svg { display: block; width: 100%; height: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.4rem 0 1.6rem;
+    font-size: 0.95rem;
+  }
+  th {
+    color: var(--muted);
+    text-align: left;
+    font-weight: 500;
+    padding: 0.45rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--secondary);
+    font-variant-numeric: tabular-nums;
+  }
+  td:first-child { color: var(--ink); }
+  .footnote { color: var(--muted); font-size: 0.85rem; margin-top: -0.9rem; }
+  .kicker {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .appendix {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem 1.5rem;
+    margin-top: 2.8rem;
+    font-size: 0.95rem;
+  }
+  .appendix h2 { margin-top: 0; font-size: 1.1rem; }
+  code {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.1em 0.35em;
+  }
+  .appendix code { background: var(--bg); }
+  @media (max-width: 48rem) { figure { margin-left: -0.5rem; margin-right: -0.5rem; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="kicker">Projects &amp; Research</p>
+  <h1>How many rounds until you can trust a strokes-gained number?</h1>
+  <p class="byline">Josh Silverman · July 2026 ·
+    <a href="https://github.com/josh-silverman/sg-reliability">Code and data pipeline on GitHub</a></p>
+
+  <p>A golfer gains two strokes a round on the field with his putter over
+  three tournaments and the broadcast says he's "found something." A
+  course-fit model leans on eight rounds of approach data. A bettor sees a
+  month of elite driving and prices it as skill. Which of those claims
+  should you believe?</p>
+
+  <p>That's a question about <strong>reliability</strong>: how quickly a
+  strokes-gained (SG) average stops being mostly luck and starts being
+  mostly skill. Baseball answered it years ago — sabermetrics knows almost
+  exactly how many plate appearances each stat needs before it
+  "stabilizes." Golf folklore has an answer too: approach play is the real
+  skill, putting is noise. I wanted the actual numbers, per category, with
+  uncertainty attached.</p>
+
+  <p><strong>The headline: the folklore is half right.</strong> Putting is
+  indeed the noisiest thing on tour — a putting average needs ~48 rounds to
+  become even half signal. But the most reliable category isn't approach.
+  It's driving, and it's not close: strokes gained off the tee is half
+  signal in <strong>~9 rounds</strong>, five times faster than putting.</p>
+
+  <h2>Why it matters</h2>
+  <ul>
+    <li><strong>Prediction and betting.</strong> If you weight a hot month
+    of putting like a hot month of driving, you're paying for noise.</li>
+    <li><strong>"Who's in form."</strong> Form talk is sample-size talk.
+    Twelve rounds of elite driving is mostly real; twelve rounds of elite
+    putting is mostly a coin flip.</li>
+    <li><strong>Player evaluation.</strong> A tour card, a Ryder Cup pick, a
+    sponsor exemption — all routinely argued from samples this analysis says
+    are too small for some categories and plenty for others.</li>
+  </ul>
+
+  <h2>The data</h2>
+  <p>Round-level strokes gained in four categories — off the tee (OTT),
+  approach (APP), around the green (ARG), putting (PUTT) — from the
+  <a href="https://datagolf.com">DataGolf</a> historical raw data API: every
+  PGA Tour event with SG tracking from 2017 through mid-2026. That's 347
+  events and 134,951 player-rounds; 96 events (mostly opposite-field and
+  fall events) have no shot tracking and are excluded by construction.</p>
+
+  <p>Cleaning was minimal and decided before the analysis ran: drop the
+  1.29% of rounds missing SG (satellite courses at multi-course events,
+  where only the host course is tracked), drop the Zurich Classic (a
+  two-man team event), and compute total SG as the sum of the four
+  categories rather than trusting the provided total (which has small
+  constant per-round baseline offsets in a handful of events). Final
+  analysis set: <strong>131,847 rounds by 1,772 players</strong>.</p>
+
+  <p>One habit I kept from reliability-engineering work: the full analysis
+  plan — questions, methods, thresholds, seeds, and what gets reported
+  regardless of outcome — was written and committed <strong>before any
+  result was computed</strong>
+  (<a href="https://github.com/josh-silverman/sg-reliability/blob/main/ANALYSIS_PLAN.md"><code>ANALYSIS_PLAN.md</code></a>
+  in the repo). What follows is that plan, executed. Everything below is
+  reproducible from the repo with one command.</p>
+
+  <h2>Methods, in plain English</h2>
+  <p><strong>Split-half reliability.</strong> Take a player's rounds within
+  a two-year window. Deal them randomly into two piles of <em>n</em> and
+  average each pile. If an <em>n</em>-round average measures skill, a
+  player's two piles should agree — across all players, the two piles
+  should correlate. That correlation <em>is</em> the reliability R of an
+  n-round average: the share of the variance in players' n-round averages
+  that reflects true skill differences rather than sampling luck. I
+  computed it for n from 5 to 60 (200 random deals each, averaged), across
+  five two-year windows, 2017–2026.</p>
+
+  <p><strong>Stabilization curves.</strong> Reliability follows a known
+  one-parameter curve, R(n)&nbsp;=&nbsp;n&nbsp;/&nbsp;(n&nbsp;+&nbsp;k) —
+  the same Spearman-Brown form sabermetrics uses. The constant k is the
+  whole story: it's the number of rounds at which a category's average
+  becomes exactly half signal, half noise. I fit k per category and
+  bootstrap the players (1,000 resamples) for confidence intervals.</p>
+
+  <p><strong>Two checks that don't depend on the model:</strong>
+  year-over-year correlation of season averages (≥30 tracked rounds in both
+  seasons), and how well each category's season average predicts
+  <em>next</em> season's total SG.</p>
+
+  <h2>Results</h2>
+  <h3>Stabilization: driving in 9 rounds, putting in 48</h3>
+  <figure>{{SVG:stabilization_curves}}</figure>
+
+  <p>Rounds until a category's average is half signal (R = 0.5, the fitted
+  k) and mostly signal (R = 0.7), with bootstrap 95% CIs:</p>
+
+  <table>
+    <thead><tr><th>Category</th><th>Half signal (R = 0.5)</th><th>Mostly signal (R = 0.7)</th></tr></thead>
+    <tbody>
+      <tr><td>Off the tee</td><td><strong>8.7</strong> [7.9, 9.7]</td><td>20 [19, 22]</td></tr>
+      <tr><td>Total SG</td><td>23 [20, 27]</td><td>54 [47, 63]</td></tr>
+      <tr><td>Approach</td><td>30 [26, 34]</td><td>69 [60, 80]*</td></tr>
+      <tr><td>Around the green</td><td>39 [36, 44]</td><td>92 [83, 103]*</td></tr>
+      <tr><td>Putting</td><td><strong>48</strong> [42, 54]</td><td>111 [98, 125]*</td></tr>
+    </tbody>
+  </table>
+  <p class="footnote">* beyond the measured n = 60 grid — read these as
+  fitted extrapolations.</p>
+
+  <p>Two tournaments of driving data tell you more about a player's tee
+  game than an entire season of putting data tells you about his putting. A
+  full PGA Tour season is roughly 70–90 tracked rounds for a regular;
+  putting never reaches R = 0.7 within one season. Approach is a genuinely
+  strong skill signal — the folklore isn't wrong about that — it just takes
+  three times the sample driving needs.</p>
+
+  <h3>The model-free check agrees</h3>
+  <figure>{{SVG:yoy_scatter}}</figure>
+
+  <p>Correlating consecutive season averages (1,309 player-season pairs)
+  needs no fitted curve, and produces the same ordering: OTT
+  <strong>0.72</strong>, APP 0.59, ARG 0.56, PUTT 0.49. Rank (Spearman)
+  correlations agree. Half of what looks like putting skill in a full
+  season doesn't survive to the next one.</p>
+
+  <h3>What to do with a hot streak</h3>
+  <figure>{{SVG:shrinkage_meter}}</figure>
+
+  <p>Reliability has a direct practical translation: R is the weight a
+  sample deserves, with the rest regressed to the tour mean. A player 12
+  rounds into a hot streak keeps <strong>58%</strong> of a driving surge,
+  29% of approach, 23% of around-the-green — and <strong>20%</strong> of
+  putting. When a broadcaster says someone "putts like a top-5 putter over
+  the last three events," the sober estimate keeps a fifth of it.</p>
+
+  <p>The forward-looking version: predicting next season's <em>total</em>
+  SG from this season's categories, driving is the best single predictor
+  (r = 0.43), approach close behind (0.40), putting far last (0.16). In a
+  joint regression, putting recovers some value (standardized β = 0.26 vs
+  its 0.16 univariate r) — putting skill does exist and does matter; a
+  season of it just measures that skill badly.</p>
+
+  <h3>Who's asking changes the answer</h3>
+  <p>One result I didn't pre-register but have to report. The primary
+  curves use every player with enough rounds at each sample size, so
+  small-n estimates include the full range of tour talent, while large-n
+  estimates skew toward regulars. Re-running the entire analysis on a fixed
+  pool — only the 386 player-windows with 120+ rounds — reliability drops
+  everywhere: k rises to ~14 for driving and ~43–48 for the other three,
+  and approach's edge over putting nearly disappears. The ordering (driving
+  fastest, putting slowest) survives, but the practical lesson sharpens:
+  <strong>among established tour regulars, almost everything but driving is
+  noise at small samples.</strong> "How many rounds until it's signal?"
+  always depends on <em>signal about whom</em> — separating a tour regular
+  from the field is easier than separating tour regulars from each
+  other.</p>
+
+  <h2>What this means in practice</h2>
+  <ul>
+    <li><strong>Trust early driving numbers.</strong> ~9 rounds of SG:OTT
+    is real information. It's also the most persistent skill and the best
+    single predictor of future total SG.</li>
+    <li><strong>Regress putting ruthlessly.</strong> Keep ~20% of a
+    12-round putting streak. Putting narratives built on a few events are,
+    quantitatively, ~80% story.</li>
+    <li><strong>"Form" has a category structure.</strong> The same
+    three-event stretch is ~majority signal for driving and
+    ~three-quarters noise for putting. Form claims that don't name a
+    category aren't claims.</li>
+    <li><strong>Season-long total SG is trustworthy at ~a half season</strong>
+    (R = 0.5 at ~23 rounds) — the aggregate stabilizes faster than three of
+    its four parts because more shots contribute to it every round.</li>
+  </ul>
+
+  <h2>Limitations</h2>
+  <p>SG exists only at shot-tracked events, so fall/opposite-field golf is
+  invisible here. The two-year windows assume skill is stable within them —
+  real skill change gets counted as noise, so these k values are, if
+  anything, slightly pessimistic. R = 0.7 crossings for approach, around
+  the green, and putting extrapolate beyond the measured grid (the fitted
+  form is excellent within it). Reliability is population-relative (see
+  above), and 2020 is a disrupted, shorter season. Course-fit and
+  field-strength effects are averaged over, not modeled.</p>
+
+  <div class="appendix">
+    <h2>Appendix: formulas and reproducibility</h2>
+    <p>Split-half reliability at n: r = corr(x̄₁, x̄₂) across players, where
+    x̄₁, x̄₂ are means of disjoint random n-round halves; reported R(n)
+    averages 200 splits. Stabilization: least-squares fit of
+    R(n) = n/(n+k) over n ∈ {5,…,60}; k is the R = 0.5 crossing and 7k/3
+    the R = 0.7 crossing. CIs: percentile bootstrap, 1,000 resamples of
+    player-windows, seed 42. Shrinkage weight for an n-round sample:
+    n/(n+k). Everything regenerates with
+    <code>python scripts/fetch_data.py &amp;&amp; python scripts/run_analysis.py
+    &amp;&amp; python scripts/make_figures.py</code>; the analysis module has a
+    test suite validated against synthetic data with known reliability.</p>
+    <p class="footnote" style="margin-top:0.6rem">Data from the DataGolf
+    API, used per their terms (the pipeline is public; the raw data is not
+    redistributed).</p>
+  </div>
+</main>
+</body>
+</html>

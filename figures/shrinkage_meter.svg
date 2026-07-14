@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="648pt" height="316.8pt" viewBox="0 0 648 316.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-07-14T15:38:31.010387</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.0, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 316.8 
+L 648 316.8 
+L 648 0 
+L 0 0 
+z
+" style="fill: #09090b"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 123.12 285.12 
+L 609.12 285.12 
+L 609.12 82.368 
+L 123.12 82.368 
+z
+" style="fill: #09090b"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_3">
+    <path d="M 123.12 122.9184 
+L 608.564016 122.9184 
+C 608.871086 122.9184 609.12 120.610772 609.12 117.763994 
+L 609.12 104.643686 
+C 609.12 101.796908 608.871086 99.48928 608.564016 99.48928 
+L 123.12 99.48928 
+z
+" clip-path="url(#pd21c0b38ed)" style="fill: #0d9488; opacity: 0.16"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 123.12 122.9184 
+L 404.137822 122.9184 
+C 404.444892 122.9184 404.693806 120.610772 404.693806 117.763994 
+L 404.693806 104.643686 
+C 404.693806 101.796908 404.444892 99.48928 404.137822 99.48928 
+L 123.12 99.48928 
+z
+" clip-path="url(#pd21c0b38ed)" style="fill: #0d9488"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #c3c2b7" x="113.4" y="115.26834" transform="rotate(-0 113.4 115.26834)">Off the tee</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 600; font-size: 11.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="412.469806" y="115.56234" transform="rotate(-0 412.469806 115.56234)">58%</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 123.12 167.9744 
+L 608.564016 167.9744 
+C 608.871086 167.9744 609.12 165.666772 609.12 162.819994 
+L 609.12 149.699686 
+C 609.12 146.852908 608.871086 144.54528 608.564016 144.54528 
+L 123.12 144.54528 
+z
+" clip-path="url(#pd21c0b38ed)" style="fill: #9085e9; opacity: 0.16"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 123.12 167.9744 
+L 262.6001 167.9744 
+C 262.90717 167.9744 263.156084 165.666772 263.156084 162.819994 
+L 263.156084 149.699686 
+C 263.156084 146.852908 262.90717 144.54528 262.6001 144.54528 
+L 123.12 144.54528 
+z
+" clip-path="url(#pd21c0b38ed)" style="fill: #9085e9"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #c3c2b7" x="113.4" y="160.32434" transform="rotate(-0 113.4 160.32434)">Approach</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 600; font-size: 11.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="270.932084" y="160.61834" transform="rotate(-0 270.932084 160.61834)">29%</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 123.12 213.0304 
+L 608.564016 213.0304 
+C 608.871086 213.0304 609.12 210.722772 609.12 207.875994 
+L 609.12 194.755686 
+C 609.12 191.908908 608.871086 189.60128 608.564016 189.60128 
+L 123.12 189.60128 
+z
+" clip-path="url(#pd21c0b38ed)" style="fill: #d95926; opacity: 0.16"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 123.12 213.0304 
+L 236.412629 213.0304 
+C 236.719699 213.0304 236.968613 210.722772 236.968613 207.875994 
+L 236.968613 194.755686 
+C 236.968613 191.908908 236.719699 189.60128 236.412629 189.60128 
+L 123.12 189.60128 
+z
+" clip-path="url(#pd21c0b38ed)" style="fill: #d95926"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #c3c2b7" x="113.4" y="205.38034" transform="rotate(-0 113.4 205.38034)">Around the green</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 11.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="244.744613" y="205.67434" transform="rotate(-0 244.744613 205.67434)">23%</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 123.12 258.0864 
+L 608.564016 258.0864 
+C 608.871086 258.0864 609.12 255.778772 609.12 252.931994 
+L 609.12 239.811686 
+C 609.12 236.964908 608.871086 234.65728 608.564016 234.65728 
+L 123.12 234.65728 
+z
+" clip-path="url(#pd21c0b38ed)" style="fill: #3987e5; opacity: 0.16"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 123.12 258.0864 
+L 220.383201 258.0864 
+C 220.690271 258.0864 220.939185 255.778772 220.939185 252.931994 
+L 220.939185 239.811686 
+C 220.939185 236.964908 220.690271 234.65728 220.383201 234.65728 
+L 123.12 234.65728 
+z
+" clip-path="url(#pd21c0b38ed)" style="fill: #3987e5"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #c3c2b7" x="113.4" y="250.43634" transform="rotate(-0 113.4 250.43634)">Putting</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 600; font-size: 11.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="228.715185" y="250.73034" transform="rotate(-0 228.715185 250.73034)">20%</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #898781" x="609.12" y="94.98368" transform="rotate(-0 609.12 94.98368)">100% = trust the 12 rounds fully</text>
+   </g>
+  </g>
+  <g id="text_10">
+   <text style="font-weight: 600; font-size: 16px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #ffffff" x="38.88" y="29.856" transform="rotate(-0 38.88 29.856)">How much of a 12-round hot streak is real</text>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #898781" transform="translate(38.88 40.239)">Weight to give a player's last 12 rounds in each category; the rest is regression to the tour mean.</text>
+   <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Arial', 'DejaVu Sans'; fill: #898781" transform="translate(38.88 52.7655)">Weight = n / (n + k), with k from the stabilization fits.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd21c0b38ed">
+   <rect x="123.12" y="82.368" width="486" height="202.752"/>
+  </clipPath>
+ </defs>
+</svg>
