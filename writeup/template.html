@@ -279,39 +279,41 @@
   driving, small samples mostly can't.</p>
 
   <h2>Practical implications</h2>
-  <p>The clearest way to show what these numbers mean is with a real case
-  from the dataset.</p>
+  <p>Statistics are useful, but they're easier to understand when you see
+  them applied to a real player. So I went back through the dataset to
+  find examples of exactly what these reliability numbers look like in
+  practice.</p>
 
   <p>In May and June of 2019, Jordan Spieth went on the hottest putting
-  run in this sample: the single best 12-round putting window by any
-  player in all 131,847 rounds sits inside it. Over 16 rounds across 4
-  straight events (the AT&amp;T Byron Nelson, the PGA Championship, the
-  Charles Schwab Challenge, and the Memorial), he gained 28.3 strokes on
-  the field with his putter, an average of +1.77 per round, finishing T3,
-  T8, and T7 in the last 3 of those events. For context, the best
-  season-long putting averages in this dataset are around +0.9 to +1.0 per
-  round, so Spieth was putting at roughly double the best sustained pace
-  of the past decade. Taken at face value, the streak said he was putting
-  at a level nobody on tour actually holds.</p>
+  run in this sample. In fact, the single best 12-round putting window by
+  any player in all 131,847 rounds sits inside it. The stretch covered 16
+  rounds across 4 straight events: the AT&amp;T Byron Nelson, the PGA
+  Championship, the Charles Schwab Challenge, and the Memorial. Over those
+  16 rounds, Spieth gained 28.3 strokes on the field with his putter, an
+  average of +1.77 per round, and he finished T3, T8, and T7 in the last 3
+  of those events. For context, the best season-long putting averages in
+  this dataset are around +0.9 to +1.0 per round. Spieth was putting at
+  roughly double the best sustained pace of the past decade.</p>
 
-  <p>The reliability results say how much of that to believe. Putting
-  takes around 48 rounds to become half signal, so a 16-round sample earns
-  a weight of 16 / (16 + 48), which comes out to about 25%. The other 75%
-  of the estimate should come from the tour average of 0. That puts the
-  honest estimate of Spieth's true putting skill at that moment at about
-  +0.44 per round: still clearly good, but a quarter of what the streak
-  suggested.</p>
+  <p>My analysis found that putting doesn't become a reasonably reliable
+  measure of skill until roughly 48 rounds. Since this streak only lasted
+  16 rounds, we shouldn't believe all of it. The math says a 16-round
+  sample earns a weight of 16 / (16 + 48), which comes out to about 25%.
+  In other words, most of this hot streak should still be treated as
+  random variation rather than evidence that Spieth suddenly became a
+  historically great putter. That puts the honest estimate of his true
+  putting skill at that moment at about +0.44 per round: still clearly
+  good, but a quarter of what the streak suggested.</p>
 
-  <p>What happened next tracked the math closely. Over his next 30
+  <p>Looking back, that's almost exactly what happened. Over his next 30
   tracked rounds, Spieth gained +0.69 per round with the putter. Over the
   486 tracked rounds he has played since the streak ended, he has gained
   +0.10 per round, almost identical to his +0.13 average in the 154 rounds
-  before it started. The hottest putting stretch in almost 10 years of
-  data told us close to nothing about how Spieth would putt going forward.
-  Measured against what he actually did over the following months, a model
-  that took the streak at face value would have overestimated his putting
-  by about a stroke per round, and the regressed estimate was off by about
-  a quarter of a stroke.</p>
+  before it started. His putting quickly returned to the level he had
+  maintained before the streak. If a prediction model had simply assumed
+  his +1.77 strokes per round represented his new normal, it would have
+  dramatically overestimated his future performance. The reliability
+  analysis pointed to a much more realistic expectation.</p>
 
   <p>Driving behaves differently, and a matching example shows why the
   same rule can't be applied to every category. In February and March of
@@ -339,6 +341,12 @@
     than 3 of its 4 components, because every shot in a round contributes
     to it.</li>
   </ul>
+
+  <p>That's the central takeaway of this research. The same number of
+  rounds can tell us very different things depending on what we're
+  measuring. A 12-round putting streak and a 12-round driving streak might
+  look equally impressive on paper, but the evidence suggests they should
+  be interpreted very differently.</p>
 
   <h2>Limitations</h2>
   <p>Strokes-gained data only exists at shot-tracked events, so fall and
