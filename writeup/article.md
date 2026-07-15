@@ -167,7 +167,52 @@ relatively easy, and small samples can do it. Distinguishing tour regulars
 from each other is much harder, and for every category except driving,
 small samples mostly can't.
 
-## What this means in practice
+## Practical implications
+
+The clearest way to show what these numbers mean is with a real case from
+the dataset.
+
+In May and June of 2019, Jordan Spieth went on the hottest putting run in
+this sample: the single best 12-round putting window by any player in all
+131,847 rounds sits inside it. Over 16 rounds across 4 straight events
+(the AT&T Byron Nelson, the PGA Championship, the Charles Schwab
+Challenge, and the Memorial), he gained 28.3 strokes on the field with his
+putter, an average of +1.77 per round, finishing T3, T8, and T7 in the
+last 3 of those events. For context, the best season-long putting averages
+in this dataset are around +0.9 to +1.0 per round, so Spieth was putting
+at roughly double the best sustained pace of the past decade. Taken at
+face value, the streak said he was putting at a level nobody on tour
+actually holds.
+
+The reliability results say how much of that to believe. Putting takes
+around 48 rounds to become half signal, so a 16-round sample earns a
+weight of 16 / (16 + 48), which comes out to about 25%. The other 75% of
+the estimate should come from the tour average of 0. That puts the honest
+estimate of Spieth's true putting skill at that moment at about +0.44 per
+round: still clearly good, but a quarter of what the streak suggested.
+
+What happened next tracked the math closely. Over his next 30 tracked
+rounds, Spieth gained +0.69 per round with the putter. Over the 486
+tracked rounds he has played since the streak ended, he has gained +0.10
+per round, almost identical to his +0.13 average in the 154 rounds before
+it started. The hottest putting stretch in almost 10 years of data told us
+close to nothing about how Spieth would putt going forward. Measured
+against what he actually did over the following months, a model that took
+the streak at face value would have overestimated his putting by about a
+stroke per round, and the regressed estimate was off by about a quarter of
+a stroke.
+
+Driving behaves differently, and a matching example shows why the same
+rule can't be applied to every category. In February and March of 2022,
+Jon Rahm averaged +1.47 strokes per round off the tee across 12 rounds (the
+WM Phoenix Open, the Genesis Invitational, and the Arnold Palmer
+Invitational). Driving becomes half signal at around 9 rounds, so a
+12-round sample keeps about 58% of its value, for a predicted true skill of
+about +0.85 per round. Over his next 30 rounds, Rahm gained +0.90 per round
+off the tee. The hot month of driving was mostly real, and the regressed
+estimate was nearly exact.
+
+More generally:
 
 - **Trust early driving numbers.** Around 9 rounds of SG:OTT is real
   information. Driving is also the most persistent skill year over year and
@@ -201,10 +246,10 @@ splits. Stabilization: least-squares fit of R(n) = n/(n+k) over
 n ∈ {5,…,60}; k is the R = 0.5 crossing and 7k/3 is the R = 0.7 crossing.
 Confidence intervals: percentile bootstrap, 1,000 resamples of
 player-windows, seed 42. Shrinkage weight for an n-round sample: n/(n+k).
-Everything regenerates with `python scripts/fetch_data.py && python
-scripts/run_analysis.py && python scripts/make_figures.py`; the analysis
-module has a test suite validated against synthetic data with known
-reliability.
+Everything, including the Spieth and Rahm example numbers, regenerates
+from the scripts in `scripts/` (`fetch_data.py`, `run_analysis.py`,
+`hot_streak_example.py`, `make_figures.py`); the analysis module has a
+test suite validated against synthetic data with known reliability.
 
 *Data from the DataGolf API, used per their terms (the pipeline is public;
 the raw data is not redistributed).*
