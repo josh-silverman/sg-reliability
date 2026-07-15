@@ -2,14 +2,22 @@
 
 *Josh Silverman · July 2026 · [Code and data pipeline on GitHub](https://github.com/josh-silverman/sg-reliability)*
 
-I wanted to dig into a question I kept running into with golf data: how
-quickly can you trust a golfer's strokes-gained numbers to represent his
-true skill level? Strokes gained (SG) breaks each round into 4 main
-categories: off the tee (OTT), approach (APP), around the green (ARG), and
-putting (PUTT). Every one of those numbers is a mix of skill and luck, and
-with a small sample it's mostly luck. What I wanted to know is how big the
-sample has to get, for each category, before the number is telling you
-something real.
+In May and June of 2019, Jordan Spieth gained 28.3 strokes on the field
+with his putter over 16 rounds, an average of almost +1.8 per round. For
+context, that's roughly double the best season-long putting pace of the
+past decade. Watching a stretch like that, it's tempting to conclude that
+a player has reached a new level. Whether that conclusion is justified is
+a question you can actually answer with data, and answering it is what
+this project is about.
+
+The question comes down to reliability: how quickly can you trust a
+golfer's strokes-gained numbers to represent his true skill level?
+Strokes gained (SG) breaks each round into 4 main categories: off the tee
+(OTT), approach (APP), around the green (ARG), and putting (PUTT). Every
+one of those numbers is a mix of skill and luck, and with a small sample
+it's mostly luck. What I wanted to know is how big the sample has to get,
+for each category, before the number is telling you something real. I'll
+come back to Spieth's streak at the end.
 
 I grew up around baseball, and baseball answered this question years ago.
 Sabermetrics has well-known estimates of how many plate appearances each
@@ -19,10 +27,10 @@ numbers for golf, with uncertainty attached.
 
 The short version of what I found: after analyzing almost 10 years of PGA
 Tour data, around 135K player-rounds, driving (OTT) is by far the most
-reliable of the 4 categories. It takes roughly 9 rounds of driving data to
-reach the point where the number is half skill and half noise. Putting is
-the least reliable, needing roughly 5 times as much data, around 48 rounds,
-to reach that same point. Approach and around the green fall in between, at
+reliable of the 4 categories. It takes roughly **9 rounds** of driving data
+to reach the point where the number is half skill and half noise. Putting
+is the least reliable, needing roughly 5 times as much data, around
+**48 rounds**, to reach that same point. Approach and around the green fall in between, at
 around 30 and 39 rounds.
 
 ## Why it matters
@@ -94,6 +102,12 @@ season average predicts the *next* season's total SG.
 ### Driving stabilizes in about 9 rounds, putting in about 48
 
 ![Stabilization curves](../figures/stabilization_curves.svg)
+
+> **Key takeaway:** If a player has gained 1.5 strokes per round putting
+> over his last 3 tournaments, don't assume he's become one of the best
+> putters on tour. At that sample size, about 80% of the number should
+> still be treated as noise. The same stretch of driving deserves much
+> more trust: closer to 60% of it is signal.
 
 The table below shows the number of rounds until each category's average is
 half signal (R = 0.5, which is the fitted k) and mostly signal (R = 0.7),
@@ -170,19 +184,16 @@ small samples mostly can't.
 ## Practical implications
 
 Statistics are useful, but they're easier to understand when you see them
-applied to a real player. So I went back through the dataset to find
-examples of exactly what these reliability numbers look like in practice.
+applied to a real player. So let's come back to Jordan Spieth's putting
+run from the opening.
 
-In May and June of 2019, Jordan Spieth went on the hottest putting run in
-this sample. In fact, the single best 12-round putting window by any
-player in all 131,847 rounds sits inside it. The stretch covered 16 rounds
-across 4 straight events: the AT&T Byron Nelson, the PGA Championship, the
-Charles Schwab Challenge, and the Memorial. Over those 16 rounds, Spieth
-gained 28.3 strokes on the field with his putter, an average of +1.77 per
-round, and he finished T3, T8, and T7 in the last 3 of those events. For
-context, the best season-long putting averages in this dataset are around
-+0.9 to +1.0 per round. Spieth was putting at roughly double the best
-sustained pace of the past decade.
+That stretch in May and June of 2019 was the hottest putting run in this
+sample. In fact, the single best 12-round putting window by any player in
+all 131,847 rounds sits inside it. It covered 16 rounds across 4 straight
+events: the AT&T Byron Nelson, the PGA Championship, the Charles Schwab
+Challenge, and the Memorial. Spieth averaged +1.77 per round with the
+putter over those 16 rounds, and he finished T3, T8, and T7 in the last 3
+of those events.
 
 My analysis found that putting doesn't become a reasonably reliable
 measure of skill until roughly 48 rounds. Since this streak only lasted 16
